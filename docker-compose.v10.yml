@@ -1,0 +1,21 @@
+version: '3'
+services:
+  marklogic10.local:
+    build: "./src/main/docker/marklogic-10"
+    image: "marklogic:10.0-2.1"
+    ports:
+    # choose what ports you want to expose (at least 8000 8001 8002)
+      - "8000-8050:8000-8050"
+    hostname: "marklogic10.local"
+    container_name: "marklogic10.local"
+    volumes:
+       - ./logs/marklogic10.local:/var/opt/MarkLogic/Logs
+       - ./Data:/data
+
+# optionally specify the subnet
+#networks:
+#  default:
+#    driver: bridge
+#    ipam:
+#      config:
+#       - subnet: 172.68.0.0/16
